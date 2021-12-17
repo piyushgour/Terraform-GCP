@@ -1,2 +1,2 @@
 # Terraform-GCP
-Terraform example code for GCP
+Terraform example code for GCP.
