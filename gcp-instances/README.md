@@ -4,7 +4,7 @@ https://ctxt.io/2/AABgKcKHEg
 
 This module supports creating:
 
-- A Jumphost Instance
+- A Instance module
 
 
 
@@ -13,7 +13,7 @@ This module supports creating:
 Basic usage of this submodule is as follows:
 
 ```hcl
-module "network" {
+module "instance" {
     source          = "github.com/piyushgour/Terrafrom.git/tfm/6-jumphost?ref=master"
     project         = "<PROJECT ID>" eg.gcpe0002
     description     = "<Optional Description>"
@@ -49,7 +49,7 @@ terraform {
 
 terraform {
   backend "gcs" {
-    bucket = "tf-state-gcpe003" #Replace with the name of the bucket created above
+    bucket = "tf-state-gcpe002" #Replace with the name of the bucket created above
     prefix = "network-state" #creates a new folder
   }
 }
@@ -68,21 +68,3 @@ Note: Check default subnets variable and overwrite with desired names.
 | environment | The environment where these resources will be created | `string` | n/a | yes |
 | region | The region where this these resources will be created | `string` | n/a | yes |
 | subnet | The subnets name, CIDR and regions | `map` | n/a | no |
-
-
-## Outputs
-
-| Name | Description |
-|------|-------------|
-| network | The VPC resource being created |
-| network\_id | The ID of the VPC being created |
-| network\_name | The name of the VPC being created |
-| network\_self\_link | The URI of the VPC being created |
-| domain | The DNS zone domain. |
-| name | The DNS zone name. |
-| name\_servers | The DNS zone name servers. |
-| type | The DNS zone type. |
-| router | The created router |
-
-<!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
-This paste expires in <1 hour. Public IP access. Share whatever you see with others in seconds with Context. Terms of ServiceReport this
