@@ -1,5 +1,3 @@
-https://ctxt.io/2/AABgKcKHEg
-
 # Terraform Jumphost Module
 
 This module supports creating:
@@ -14,7 +12,7 @@ Basic usage of this submodule is as follows:
 
 ```hcl
 module "instance" {
-    source          = "github.com/piyushgour/Terrafrom.git/tfm/6-jumphost?ref=master"
+    source          = "git@github.com:piyushgour/Terraform-GCP.git/gcp-instances?ref=main"
     project         = "<PROJECT ID>" eg.gcpe0002
     description     = "<Optional Description>"
     name         = "<your_machine_name>"
@@ -49,22 +47,24 @@ terraform {
 
 terraform {
   backend "gcs" {
-    bucket = "tf-state-gcpe002" #Replace with the name of the bucket created above
-    prefix = "network-state" #creates a new folder
+    bucket = "tf-state-gcp-bucket" #Replace with the name of the bucket created above
+    prefix = "instance-state" #creates a new folder
   }
 }
 ```
 Note: Check default subnets variable and overwrite with desired names.
 
-<!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| provision\_vpc | Flag to create VPC network | `bool` | true | yes |
-| network\_name | The name of the network being created; set to "defaul" if not creating VPC | `string` | n/a | yes |
-| project\_id | The ID of the project where these resources will be created | `string` | n/a | yes |
+| project | The ID of the project where these resources will be created | `string` | n/a | yes |
 | description| Optional description | `string` | n/a | no |
-| environment | The environment where these resources will be created | `string` | n/a | yes |
-| region | The region where this these resources will be created | `string` | n/a | yes |
-| subnet | The subnets name, CIDR and regions | `map` | n/a | no |
+| name| Instance Name | `string` | n/a | no |
+| machine_type| compute capacity of instance | `string` | n/a | yes |
+| region | The region where this these resources will be created | `string` | n/a | no |
+| zone   | Zone where to machine deployed in a zone | `string` | n/a | no |
+| image| OS Image like ubuntu/RHEL/Windows | `string` | n/a | yes |
+| network | The name of the network where Instance to deployed; set to "defaul" if not specific VPC | `string` | n/a | yes |
+| subnetwork | The name of the subnetwork where Instance to deployed in Network; set to "defaul" if not specific Subnetwork | `string` | n/a | yes |
+
