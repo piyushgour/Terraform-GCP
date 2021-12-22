@@ -1,5 +1,5 @@
 variable "ssh_key_name" {
-  type = string
+  type    = string
   default = "piyush-gcp-pub-key"
 }
 
